@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayHero Payment - Aviator Style</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- SweetAlert2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <div class="container py-3">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <div class="game-logo me-3">
+                            <i class="bi bi-credit-card-fill text-warning"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container py-5">
+            <div class="payment-form-container">
+                <div class="form-header text-center mb-5">
+                    <img src="DP.png" alt="Payment Header" class="payment-header-image">
+                    <p class="form-subtitle">Complete your payment to continue playing</p>
+                </div>
+                
+                <form id="paymentForm" class="needs-validation payment-form" novalidate>
+                    <div class="row g-4">
+                        <div class="col-12">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control bet-input" id="customerName" placeholder=" " required>
+                                <label for="customerName" class="form-label">
+                                    <i class="bi bi-person-fill me-2"></i> Name
+                                </label>
+                                <div class="invalid-feedback">Please provide your name</div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-floating mb-3">
+                                <input type="tel" class="form-control bet-input" id="phoneNumber" placeholder=" " pattern="^07\d{8}$" required>
+                                <label for="phoneNumber" class="form-label">
+                                    <i class="bi bi-phone-fill me-2"></i> Phone Number
+                                </label>
+                                <div class="invalid-feedback">Please enter a valid phone number starting with 07</div>
+                                <div class="form-text">
+                                    <i class="bi bi-info-circle-fill me-1"></i> Enter your registered phone number
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control bet-input" id="amount" min="1" placeholder=" " required>
+                                <label for="amount" class="form-label">
+                                    <i class="bi bi-cash me-2"></i> Amount (KES)
+                                </label>
+                                <div class="invalid-feedback">Please enter a valid amount</div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control bet-input" id="reference" value="DEPOSIT" placeholder=" " required>
+                                <label for="reference" class="form-label">
+                                    <i class="bi bi-hash me-2"></i> Reference
+                                </label>
+                                <div class="invalid-feedback">Please provide a reference number</div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn action-button btn-warning btn-lg position-relative" id="submitBtn">
+                                    <i class="bi bi-credit-card-fill me-2"></i>
+                                    Process Payment
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                
+                <div id="loader" class="loading-container">
+                    <div class="spinner-container">
+                        <div class="spinner"></div>
+                    </div>
+                    <p class="loading-text">Processing payment. Please check your phone for the payment prompt...</p>
+                </div>
+                
+                <div class="payment-status" id="paymentStatus"></div>
+                
+                <div class="form-footer text-center mt-5">
+                    <p class="text-muted small">
+                        Powered by <a href="https://payherokenya.com" target="_blank" class="text-warning">Pay Hero Kenya</a>
+                    </p>
+                    <p class="text-muted small">
+                        <i class="bi bi-shield-check me-1"></i> Secure Payment Processing
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="payment.js"></script>
+</body>
+</html>

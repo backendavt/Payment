@@ -1,0 +1,690 @@
+/* PayHero Payment - Aviator Style */
+
+/* Global styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Game container - matches Aviator theme */
+.game-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  color: white;
+}
+
+/* Header styles - matches Aviator header */
+.game-header {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.game-logo {
+  font-size: 2rem;
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+.game-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, #fbbf24, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Live indicator - matches Aviator */
+.live-indicator {
+  animation: pulse 2s infinite;
+}
+
+.live-indicator .badge {
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 20px currentColor;
+  }
+  to {
+    text-shadow: 0 0 30px currentColor, 0 0 40px currentColor;
+  }
+}
+
+/* Payment form container */
+.payment-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+.payment-form-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+/* Form header */
+.form-header {
+  margin-bottom: 2rem;
+}
+
+/* Payment header image */
+.payment-header-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+.payment-header-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.form-subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+}
+
+/* Form styling - matches Aviator bet inputs */
+.payment-form .form-floating {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.payment-form .form-control {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.payment-form .form-control:focus {
+  background: rgba(0, 0, 0, 0.5);
+  border-color: #fbbf24;
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2);
+  transform: translateY(-2px);
+}
+
+.payment-form .form-control:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+.payment-form .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Form labels */
+.payment-form .form-label {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.payment-form .form-floating > .form-control:focus ~ .form-label,
+.payment-form .form-floating > .form-control:not(:placeholder-shown) ~ .form-label {
+  color: #fbbf24;
+  transform: scale(0.85) translateY(-1rem) translateX(0.15rem);
+}
+
+/* Focused state animations */
+.payment-form .form-floating.focused .form-control {
+  border-color: #fbbf24;
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2);
+  transform: translateY(-2px);
+}
+
+.payment-form .form-floating.focused .form-label {
+  color: #fbbf24;
+  text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+}
+
+/* Form text and validation */
+.form-text {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.invalid-feedback {
+  color: #ef4444;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+/* Action button - matches Aviator style */
+.action-button {
+  background: linear-gradient(45deg, #fbbf24, #f59e0b);
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #1a1a1a;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.action-button:hover {
+  background: linear-gradient(45deg, #f59e0b, #d97706);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(251, 191, 36, 0.4);
+  color: #1a1a1a;
+}
+
+.action-button:active {
+  transform: translateY(-1px);
+}
+
+.action-button:disabled {
+  background: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.5);
+  transform: none;
+  box-shadow: none;
+}
+
+/* Button loading state */
+.action-button .spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+  border-width: 0.15em;
+}
+
+/* Loading container */
+.loading-container {
+  display: none;
+  text-align: center;
+  margin: 2rem 0;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.spinner-container {
+  margin-bottom: 1rem;
+}
+
+.spinner {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border: 4px solid transparent;
+  border-radius: 50%;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(45deg, #fbbf24, #10b981) border-box;
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.3),
+              inset 0 0 20px rgba(16, 185, 129, 0.1);
+  animation: spin 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+  position: relative;
+}
+
+@keyframes spin {
+  to { 
+    transform: rotate(360deg); 
+  }
+}
+
+.loading-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* Payment status */
+.payment-status {
+  display: none;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  text-align: center;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+}
+
+.payment-status.alert-success {
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10b981;
+}
+
+.payment-status.alert-danger {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+}
+
+.payment-status.alert-warning {
+  background: rgba(251, 191, 36, 0.2);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  color: #fbbf24;
+}
+
+/* Form footer */
+.form-footer {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-footer a {
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.form-footer a:hover {
+  text-shadow: 0 0 10px currentColor;
+}
+
+/* Enhanced Responsive Design */
+/* Large Desktop (1200px and above) */
+@media (min-width: 1200px) {
+  .payment-form-container {
+    max-width: 700px;
+    padding: 2.5rem;
+  }
+  
+  .form-title {
+    font-size: 2.8rem;
+  }
+  
+  .game-logo {
+    font-size: 2.5rem;
+  }
+}
+
+/* Desktop (992px - 1199px) */
+@media (max-width: 1199px) and (min-width: 992px) {
+  .payment-form-container {
+    max-width: 650px;
+    padding: 2.25rem;
+  }
+  
+  .form-title {
+    font-size: 2.5rem;
+  }
+}
+
+/* Tablet Landscape (768px - 991px) */
+@media (max-width: 991px) and (min-width: 768px) {
+  .payment-form-container {
+    max-width: 600px;
+    margin: 1.5rem;
+    padding: 2rem;
+  }
+  
+  .form-title {
+    font-size: 2.2rem;
+  }
+  
+  .game-logo {
+    font-size: 1.8rem;
+  }
+  
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Tablet Portrait (576px - 767px) */
+@media (max-width: 767px) and (min-width: 576px) {
+  .payment-form-container {
+    max-width: 100%;
+    margin: 1rem;
+    padding: 1.75rem;
+  }
+  
+  .form-title {
+    font-size: 2rem;
+  }
+  
+  .game-logo {
+    font-size: 1.6rem;
+  }
+  
+  .payment-header-image {
+    max-width: 90%;
+  }
+  
+  .form-subtitle {
+    font-size: 1rem;
+  }
+  
+  .action-button {
+    padding: 0.9rem 1.8rem;
+    font-size: 1rem;
+  }
+  
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  .py-5 {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+}
+
+/* Mobile Large (480px - 575px) */
+@media (max-width: 575px) and (min-width: 480px) {
+  .payment-form-container {
+    max-width: 100%;
+    margin: 0.75rem;
+    padding: 1.5rem;
+  }
+  
+  .form-title {
+    font-size: 1.8rem;
+  }
+  
+  .game-logo {
+    font-size: 1.5rem;
+  }
+  
+  .payment-header-image {
+    max-width: 85%;
+  }
+  
+  .form-subtitle {
+    font-size: 0.95rem;
+  }
+  
+  .action-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .py-5 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+  
+  .py-3 {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+}
+
+/* Mobile Small (below 480px) */
+@media (max-width: 479px) {
+  .payment-form-container {
+    max-width: 100%;
+    margin: 0.5rem;
+    padding: 1.25rem;
+  }
+  
+  .form-title {
+    font-size: 1.6rem;
+  }
+  
+  .game-logo {
+    font-size: 1.4rem;
+  }
+  
+  .payment-header-image {
+    max-width: 80%;
+  }
+  
+  .form-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .action-button {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+  
+  .container {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+  
+  .py-5 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+  
+  .py-3 {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+  
+  .mb-5 {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .mb-3 {
+    margin-bottom: 1rem !important;
+  }
+  
+  .g-4 {
+    --bs-gutter-x: 1rem;
+    --bs-gutter-y: 1rem;
+  }
+}
+
+/* Extra Small Mobile (below 360px) */
+@media (max-width: 359px) {
+  .payment-form-container {
+    margin: 0.25rem;
+    padding: 1rem;
+  }
+  
+  .form-title {
+    font-size: 1.4rem;
+  }
+  
+  .game-logo {
+    font-size: 1.2rem;
+  }
+  
+  .payment-header-image {
+    max-width: 75%;
+  }
+  
+  .form-subtitle {
+    font-size: 0.85rem;
+  }
+  
+  .action-button {
+    padding: 0.7rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .container {
+    padding-left: 0.125rem;
+    padding-right: 0.125rem;
+  }
+  
+  .py-5 {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+  
+  .py-3 {
+    padding-top: 0.375rem !important;
+    padding-bottom: 0.375rem !important;
+  }
+}
+
+/* Success and error animations */
+.success-flash {
+  animation: success-flash 0.5s ease-in-out;
+}
+
+@keyframes success-flash {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: rgba(16, 185, 129, 0.3);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.error-flash {
+  animation: error-flash 0.5s ease-in-out;
+}
+
+@keyframes error-flash {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: rgba(239, 68, 68, 0.3);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+/* Form validation styling */
+.was-validated .form-control:valid {
+  border-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+.was-validated .form-control:invalid {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+}
+
+/* Focus animations */
+.payment-form .form-control:focus {
+  animation: focus-glow 0.3s ease-out;
+}
+
+@keyframes focus-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2);
+  }
+}
+
+/* Fade animations */
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+.fade-out {
+  animation: fadeOut 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-20px); }
+}
+
+/* Processing payment animation */
+.processing-payment .game-container {
+  animation: processing-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes processing-glow {
+  from { box-shadow: inset 0 0 20px rgba(251, 191, 36, 0.1); }
+  to { box-shadow: inset 0 0 30px rgba(251, 191, 36, 0.2); }
+}
+
+/* Input group enhancements */
+.form-floating .form-control:focus + .form-label {
+  transform: scale(0.85) translateY(-1rem) translateX(0.15rem);
+  color: #fbbf24;
+}
+
+/* Enhanced hover effects */
+.payment-form-container:hover .payment-header-image {
+  transform: scale(1.02);
+}
+
+/* Touch-friendly improvements for mobile */
+@media (hover: none) and (pointer: coarse) {
+  .payment-form .form-control {
+    min-height: 48px; /* Minimum touch target size */
+  }
+  
+  .action-button {
+    min-height: 48px;
+    min-width: 120px;
+  }
+  
+  .form-floating .form-label {
+    font-size: 1rem; /* Larger text for mobile */
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (orientation: landscape) and (max-height: 600px) {
+  .py-5 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+  
+  .payment-form-container {
+    margin: 0.5rem auto;
+  }
+  
+  .form-header {
+    margin-bottom: 1rem;
+  }
+  
+  .payment-header-image {
+    max-width: 60%;
+    margin-bottom: 0.5rem;
+  }
+}
