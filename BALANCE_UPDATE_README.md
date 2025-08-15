@@ -65,6 +65,7 @@ PAYHERO_API_URL=https://backend.payhero.co.ke/api/v2
 
 # Server Configuration
 PORT=3002
+# Note: For production deployment, this service is available at: https://payment-omye.onrender.com
 ```
 
 ### 3. **Database Requirements**
@@ -104,8 +105,12 @@ npm start    # Production mode
 
 ## 📡 API Endpoints
 
+**Production Base URL:** `https://payment-omye.onrender.com`
+
 ### POST `/api/process-payment`
 Initiates payment with PayHero API.
+
+**Full URL:** `https://payment-omye.onrender.com/api/process-payment`
 
 **Request Body:**
 ```json
@@ -129,6 +134,8 @@ Initiates payment with PayHero API.
 ### GET `/api/check-status`
 Checks payment status and updates balance if successful.
 
+**Full URL:** `https://payment-omye.onrender.com/api/check-status`
+
 **Query Parameters:**
 - `reference`: Payment reference from PayHero
 - `phone_number`: User's phone number (for balance update)
@@ -143,6 +150,8 @@ Checks payment status and updates balance if successful.
 
 ### GET `/debug/payments` ⭐ **NEW**
 Debug endpoint to see stored payment data.
+
+**Full URL:** `https://payment-omye.onrender.com/debug/payments`
 
 **Response:**
 ```json
@@ -252,6 +261,38 @@ Consider implementing:
 - **Webhook Support**: Real-time payment notifications
 - **Balance Validation**: Prevent duplicate balance updates
 - **Admin Dashboard**: Monitor payment activities
+
+## 🌐 Production Deployment
+
+### **Live Service**
+The payment service is now deployed and available at:
+**https://payment-omye.onrender.com**
+
+### **Environment Variables for Production**
+Ensure your production environment has these variables set:
+```env
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_SERVICE_KEY=your_service_role_key_here
+CHANNEL_ID=1692
+PROVIDER=sasapay
+NETWORK_CODE=63902
+BASIC_AUTH_TOKEN=your_auth_token_here
+PAYHERO_API_URL=https://backend.payhero.co.ke/api/v2
+```
+
+### **Frontend Integration**
+Update your frontend to use the production URL:
+```javascript
+const PAYMENT_API_URL = 'https://payment-omye.onrender.com';
+
+// Process payment
+const response = await fetch(`${PAYMENT_API_URL}/api/process-payment`, {
+  // ... payment data
+});
+
+// Check status
+const statusResponse = await fetch(`${PAYMENT_API_URL}/api/check-status?reference=${reference}&phone_number=${phoneNumber}`);
+```
 
 ## 🔍 **Verification Steps**
 
