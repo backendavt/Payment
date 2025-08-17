@@ -65,7 +65,7 @@ PAYHERO_API_URL=https://backend.payhero.co.ke/api/v2
 
 # Server Configuration
 PORT=3002
-# Note: For production deployment, this service is available at: https://payment-omye.onrender.com
+# Note: For production deployment, this service is available at: https://payment-1igx.onrender.com
 ```
 
 ### 3. **Database Requirements**
@@ -105,12 +105,12 @@ npm start    # Production mode
 
 ## 📡 API Endpoints
 
-**Production Base URL:** `https://payment-omye.onrender.com`
+**Production Base URL:** `https://payment-1igx.onrender.com`
 
 ### POST `/api/process-payment`
 Initiates payment with PayHero API.
 
-**Full URL:** `https://payment-omye.onrender.com/api/process-payment`
+**Full URL:** `https://payment-1igx.onrender.com/api/process-payment`
 
 **Request Body:**
 ```json
@@ -134,7 +134,7 @@ Initiates payment with PayHero API.
 ### GET `/api/check-status`
 Checks payment status and updates balance if successful.
 
-**Full URL:** `https://payment-omye.onrender.com/api/check-status`
+**Full URL:** `https://payment-1igx.onrender.com/api/check-status`
 
 **Query Parameters:**
 - `reference`: Payment reference from PayHero
@@ -151,7 +151,7 @@ Checks payment status and updates balance if successful.
 ### GET `/debug/payments` ⭐ **NEW**
 Debug endpoint to see stored payment data.
 
-**Full URL:** `https://payment-omye.onrender.com/debug/payments`
+**Full URL:** `https://payment-1igx.onrender.com/debug/payments`
 
 **Response:**
 ```json
@@ -266,7 +266,7 @@ Consider implementing:
 
 ### **Live Service**
 The payment service is now deployed and available at:
-**https://payment-omye.onrender.com**
+**https://payment-1igx.onrender.com**
 
 ### **Environment Variables for Production**
 Ensure your production environment has these variables set:
@@ -283,7 +283,7 @@ PAYHERO_API_URL=https://backend.payhero.co.ke/api/v2
 ### **Frontend Integration**
 Update your frontend to use the production URL:
 ```javascript
-const PAYMENT_API_URL = 'https://payment-omye.onrender.com';
+const PAYMENT_API_URL = 'https://payment-1igx.onrender.com';
 
 // Process payment
 const response = await fetch(`${PAYMENT_API_URL}/api/process-payment`, {

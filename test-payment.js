@@ -1,7 +1,7 @@
 // Test script to verify payment amount storage
 const axios = require('axios');
 
-const PAYMENT_SERVICE_URL = 'https://payment-omye.onrender.com';
+const PAYMENT_SERVICE_URL = 'https://payment-1igx.onrender.com';
 
 async function testPaymentFlow() {
     try {
